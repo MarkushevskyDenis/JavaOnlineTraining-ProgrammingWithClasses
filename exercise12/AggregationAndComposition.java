@@ -8,22 +8,24 @@ public class AggregationAndComposition {
 	public static void main(String[] args) {
 
 		Car car = new Car(new Engine("V6", 0.6, "petrol"), new Wheel("spare wheel"), "BMW", 100, 9, 100);
-		
+		UserViewAction view = new UserViewAction();
+
 		car.startEngine();
-		car.drive(300);
-		car.checkWheel();
+		System.out.println(car.drive(300));
+		view.checkWheel(car);
 		car.startEngine();
-		car.drive(300);
-		car.checkWheel();
+		System.out.println(car.drive(300));
+		view.checkWheel(car);
 		car.startEngine();
-		car.drive(300);
-		car.checkWheel();
+		System.out.println(car.drive(300));
+		view.checkWheel(car);
 		car.startEngine();
-		car.drive(300);
-		car.checkWheel();
+		System.out.println(car.drive(300));
+		view.checkWheel(car);
 		car.fillUp("petrol", 100);
 		car.startEngine();
-		car.drive(300);
-		car.checkWheel();
+		System.out.println(car.drive(300));
+		view.checkWheel(car);
+		view.outModel(car);
 	}
 }

@@ -86,23 +86,6 @@ public class Car {
 
 	}
 
-	public void outModel() {
-		System.out.println(model);
-	}
-
-
-	public boolean checkWheel() {
-
-		boolean q = true;
-
-		for (int i = 0; i < 5; i++) {
-			if (wheel[i].getPuncture() == true) {
-				System.out.println(wheel[i].getName() + " is punctured");
-			}
-		}
-		return q;
-	}
-
 	public void changeWheel(String wheelName) {
 
 		Wheel wheel = null;
@@ -165,4 +148,8 @@ public class Car {
 		return wheel;
 	}
 	
+	public String getModel() {
+		return model;
+	}
+
 }
