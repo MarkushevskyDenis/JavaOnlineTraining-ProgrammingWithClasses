@@ -8,13 +8,14 @@ package by.jonline.grow.programmingwithclass.exercise5;
  */
 
 public class SimpleClassAndObject5 {
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		Counter counter = new Counter(0, 100, 0);
+        Counter counter = new Counter(0, 3, 0);
 
-		while (counter.encrease()) {
-			System.out.println(counter.getCount());
-		}
+        while (counter.hasIncrease()) {
+            System.out.println(counter.getCount());
+            counter.increase();
+        }
 
-	}
+    }
 }

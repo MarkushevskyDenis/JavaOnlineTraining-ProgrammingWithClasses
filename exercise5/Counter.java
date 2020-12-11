@@ -23,24 +23,40 @@ public class Counter {
 		this.min = min;
 	}
 
-	public boolean encrease() {
-		if (count == max) {
-			// System.out.println("достигнут максимум");
-			return false;
+	public void increase() {
+
+		if (hasIncrease()) {
+			count++;
 		}
 
-		count++;
-		return true;
 	}
 
-	public boolean reduce() {
-		if (count == min) {
-			// System.out.println("достигнут минимум");
-			return false;
+	public void reduce() {
+
+		if (hasReduce()) {
+			count--;
 		}
 
-		count--;
-		return true;
+	}
+
+	public boolean hasReduce(){
+
+		if (count == min) {
+			return false;
+		}else{
+			return true;
+		}
+
+	}
+
+	public boolean hasIncrease(){
+
+		if (count == max) {
+			return false;
+		}else{
+			return true;
+		}
+
 	}
 
 	public int getCount() {

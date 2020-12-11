@@ -1,86 +1,111 @@
 package by.jonline.grow.programmingwithclass.exercise4;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
 public class Train {
-	String end;
-	int name;
-	String time;
 
-	public Train(String end, int name, String time) {
-		super();
-		this.end = end;
-		this.name = name;
-		this.time = time;
-	}
+    private String destination;
+    private int name;
+    private Date time;
 
-	public static void sortName(Train[] train) {
+    private static DateFormat dateFormat = new SimpleDateFormat("HH:mm");
 
-		Train swap;
+    public Train(String destination, int name, String time) throws ParseException {
+        this.destination = destination;
+        this.name = name;
+        this.time = dateFormat.parse(time);
+    }
 
-		for (int i = 0; i < train.length - 1; i++) {
-			if (train[i].name > train[i + 1].name) {
-				swap = train[i];
-				train[i] = train[i + 1];
-				train[i + 1] = swap;
-				i = -1;
-			}
-		}
+    public static void sortByName(Train[] train) {
 
-	}
+        Train swap;
 
-	public static void out(Train[] train, int name) {
+        for (int i = 0; i < train.length - 1; i++) {
+            if (train[i].name > train[i + 1].name) {
+                swap = train[i];
+                train[i] = train[i + 1];
+                train[i + 1] = swap;
+                i = -1;
+            }
+        }
 
-		for (int i = 0; i < train.length; i++) {
+    }
 
-			if (train[i].name == name) {
-				System.out.println("íîìåð ïîåçäà " + train[i].name + "; êîíå÷íûé ïóíêò " + train[i].end + "; âðåìÿ "
-						+ train[i].time);
-				return;
-			}
+    public static void sortByTime(Train[] train) {                 //ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð¿Ð¾ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸ Ð¾Ð´Ð¸Ð½Ð°ÐºÐ¾Ð²Ñ‹Ñ… ÐºÐ¾Ð½ÐµÑ‡Ð½Ñ‹Ñ… Ð¿ÑƒÐ½Ñ‚Ð¾Ð²
 
-		}
+        int i = 0;
+        Train swap;
 
-		System.out.println("íè÷åãî");
+        while (i != train.length) {
 
-	}
+            while (i != train.length - 1 && train[i].destination.equals(train[i + 1].destination)) {
 
-	public static void sort(Train[] train) {
-		Train swap;
-		int i;
-		for (i = 0; i < train.length - 1; i++) {
+                if (train[i].time.compareTo(train[i + 1].time) > 0) {
+                    swap = train[i];
+                    train[i] = train[i + 1];
+                    train[i + 1] = swap;
+                    i = -1;
+                }
+                i++;
 
-			if (train[i].end.compareTo(train[i + 1].end) > 0) { // ñîðòèðîâêà ïî êîíå÷íîìó ïóíêòó
-				swap = train[i];
-				train[i] = train[i + 1];
-				train[i + 1] = swap;
-				i = -1;
-			}
+            }
+            i++;
 
-		}
+        }
 
-		i = 0;
+    }
 
-		while (i != train.length) { // ñîðòèðîâêà ïî âðåìåíè
+    public static void sortByEnd(Train[] train) {           //ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð¿Ð¾ Ð¼ÐµÑÑ‚Ñƒ Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ
 
-			while (i != train.length - 1 && train[i].end.equals(train[i + 1].end)) {
+        Train swap;
 
-				if (train[i].time.compareTo(train[i + 1].time) > 0) {
-					swap = train[i];
-					train[i] = train[i + 1];
-					train[i + 1] = swap;
-					i = -1;
-				}
-				i++;
+        for (int i = 0; i < train.length - 1; i++) {
 
-			}
-			i++;
+            if (train[i].destination.compareTo(train[i + 1].destination) > 0) {
+                swap = train[i];
+                train[i] = train[i + 1];
+                train[i + 1] = swap;
+                i = -1;
+            }
 
-		}
+        }
 
-	}
+    }
 
-	@Override
-	public String toString() {
-		return getClass().getSimpleName() + " [end=" + end + ", name=" + name + ", time=" + time + "]";
-	}
+    public static void out(Train[] train, int name) {
+
+        boolean q = true;
+
+        for (int i = 0; i < train.length; i++) {
+
+            if (train[i].name == name) {
+                System.out.println("Ð½Ð¾Ð¼ÐµÑ€ Ð¿Ð¾ÐµÐ·Ð´Ð° " + train[i].name + "; ÐºÐ¾Ð½ÐµÑ‡Ð½Ñ‹Ð¹ Ð¿ÑƒÐ½ÐºÑ‚ " + train[i].destination + "; Ð²Ñ€ÐµÐ¼Ñ "
+                        + dateFormat.format(train[i].time));
+                q = false;
+            }
+
+        }
+
+        if (q) {
+            System.out.println("Ñ‚Ð°ÐºÐ¾Ð³Ð¾ Ð¿Ð¾ÐµÐ·Ð´Ð° Ð½ÐµÑ‚");
+        }
+
+    }
+
+    public static void sort(Train[] train) {
+
+        sortByEnd(train);
+        sortByTime(train);
+
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + " [end=" + destination + ", name=" + name + ", time=" + dateFormat.format(time) + "]";
+    }
 
 }

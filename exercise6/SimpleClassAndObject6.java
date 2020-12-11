@@ -25,23 +25,23 @@ public class SimpleClassAndObject6 {
 			while (time.getMinute() != 59) {
 
 				while (time.getSecond() != 59) {
-					time.encreaseSecond(1);
+					time.increaseSecond(1);
 					time.out();
 				}
-				time.encreaseSecond(1);
+				time.increaseSecond(1);
 				
-				time.encreaseMinute(1);
+				time.increaseMinute(1);
 				time.out();
 			}
 
 			while (time.getSecond() != 59) {
-				time.encreaseSecond(1);
+				time.increaseSecond(1);
 				time.out();
 			}
-			time.encreaseSecond(1);
+			time.increaseSecond(1);
 
-			time.encreaseMinute(1);
-			time.encreaseHour(1);
+			time.increaseMinute(1);
+			time.increaseHour(1);
 			time.out();
 		}
 

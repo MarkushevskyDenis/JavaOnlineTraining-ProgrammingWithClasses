@@ -44,7 +44,9 @@ class Test1 {
 		
 		if (var1 > var2) {
 			return var1;
-		} else return var2;
+		} else{
+			return var2;
+		}
 		
 	}
 

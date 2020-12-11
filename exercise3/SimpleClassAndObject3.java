@@ -8,9 +8,9 @@ package by.jonline.grow.programmingwithclass.exercise3;
 public class SimpleClassAndObject3 {
 	public static void main(String[] args) {
 
-		int rating[][] = { { 1, 2, 3, 4, 5 }, { 9, 9, 9, 9, 9 }, { 9, 10, 9, 10, 9 }, { 1, 6, 9, 7, 3 },
+		int rating[][] = { { 1, 2, 3, 4 }, { 9, 9, 9, 9, 9 }, { 9, 10, 9, 10, 9 }, { 1, 6, 9, 7, 3 },
 				{ 9, 10, 9, 9, 9 }, { 10, 0, 0, 0, 0 }, { 10, 10, 10, 9, 0 }, { 10, 10, 10, 10, 10 }, { 0, 0, 0, 0, 0 },
-				{ 9, 9, 5, 10, 10 } };
+				{ 9, 9, 5, 10, 10, 1 } };
 
 		Student[] student = new Student[10];
 		for (int i = 0; i < student.length; i++) {

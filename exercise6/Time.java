@@ -23,14 +23,14 @@ public class Time {
 
 	public void setHour(int hour) {
 		if (hour > 23 || hour < 0) {
-			System.out.println("îøèáêà ââîäà ÷àñà");
+			System.out.println("Ğ¾ÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ° Ñ‡Ğ°ÑĞ°");
 			this.hour = 0;
 			return;
 		}
 		this.hour = hour;
 	}
 
-	public void encreaseHour(int i) {
+	public void increaseHour(int i) {
 		int k;
 
 		hour += i;
@@ -59,7 +59,7 @@ public class Time {
 	public void setMinute(int minute) {
 
 		if (minute > 59 || minute < 0) {
-			System.out.println("îøèáêà ââîäà ìèíóò");
+			System.out.println("Ğ¾ÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ° Ğ¼Ğ¸Ğ½ÑƒÑ‚");
 			this.minute = 0;
 			return;
 		}
@@ -67,7 +67,7 @@ public class Time {
 		this.minute = minute;
 	}
 
-	public void encreaseMinute(int i) {
+	public void increaseMinute(int i) {
 		int k;
 
 		minute += i;
@@ -96,7 +96,7 @@ public class Time {
 	public void setSecond(int second) {
 
 		if (second > 59 || second < 0) {
-			System.out.println("îøèáêà ââîäà ñåêóíä");
+			System.out.println("Ğ¾ÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ° ÑĞµĞºÑƒĞ½Ğ´");
 			this.second = 0;
 			return;
 		}
@@ -104,7 +104,7 @@ public class Time {
 		this.second = second;
 	}
 
-	public void encreaseSecond(int i) {
+	public void increaseSecond(int i) {
 		int k;
 
 		second += i;
@@ -128,14 +128,14 @@ public class Time {
 	}
 
 	public void out() {
-		System.out.print(hour / 10 + "" + (hour - (hour / 10) * 10) + "÷: ");
-		System.out.print(minute / 10 + "" + (minute - (minute / 10) * 10) + "ì: ");
-		System.out.println(second / 10 + "" + (second - (second / 10) * 10) + "ñ");
+		System.out.print(hour / 10 + "" + (hour - (hour / 10) * 10) + "Ñ‡: ");
+		System.out.print(minute / 10 + "" + (minute - (minute / 10) * 10) + "Ğ¼: ");
+		System.out.println(second / 10 + "" + (second - (second / 10) * 10) + "Ñ");
 	}
 
 	public String out(String str) {
-		return hour / 10 + "" + (hour - (hour / 10) * 10) + "÷: " + minute / 10 + "" + (minute - (minute / 10) * 10)
-				+ "ì: " + second / 10 + "" + (second - (second / 10) * 10) + "ñ";
+		return hour / 10 + "" + (hour - (hour / 10) * 10) + "Ñ‡: " + minute / 10 + "" + (minute - (minute / 10) * 10)
+				+ "Ğ¼: " + second / 10 + "" + (second - (second / 10) * 10) + "Ñ";
 	}
 
 	public static boolean greater(Time first, Time second) {
