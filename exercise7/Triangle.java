@@ -1,61 +1,61 @@
 package by.jonline.grow.programmingwithclass.exercise7;
 
 public class Triangle {
-	private double[] x;
-	private double[] y;
+    private Dot[] dots;
 
-	private double a;
-	private double b;
-	private double c;
+    private double a;
+    private double b;
+    private double c;
 
-	private Triangle() {
+    private Triangle() {
 
-	}
+    }
 
-	private Triangle(double[] x, double y[]) {
-		this.x = x;
-		this.y = y;
+    private Triangle(Dot[] dots) {
+        this.dots = dots;
 
-		a = Math.sqrt(Math.pow(x[2] - x[0], 2) + Math.pow(y[2] - y[0], 2));
-		b = Math.sqrt(Math.pow(x[2] - x[1], 2) + Math.pow(y[2] - y[1], 2));
-		c = Math.sqrt(Math.pow(x[1] - x[0], 2) + Math.pow(y[1] - y[0], 2));
+        a = Math.sqrt(Math.pow(dots[2].getX() - dots[0].getX(), 2) + Math.pow(dots[2].getY() - dots[0].getY(), 2));
+        b = Math.sqrt(Math.pow(dots[2].getX() - dots[1].getX(), 2) + Math.pow(dots[2].getY() - dots[1].getY(), 2));
+        c = Math.sqrt(Math.pow(dots[1].getX() - dots[0].getX(), 2) + Math.pow(dots[1].getY() - dots[0].getY(), 2));
 
-	}
+    }
 
-	public static Triangle compile(double[] x, double y[]) {
-		return new Triangle(x, y);
-	}
+    public static Triangle compile(Dot[] dots) {
+        if (dots.length != 3 || dots.length != 3) {
+            System.out.println("объект не был создан");
+            return null;
+        }
+        return new Triangle(dots);
+    }
 
-	public double square() {
+    public double square() {
 
-		double p;
-		double s;
+        double p;
+        double s;
 
-		p = (a + b + c) / 2;
-		s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+        p = (a + b + c) / 2;
+        s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
 
-		return s;
+        return s;
 
-	}
+    }
 
-	public double perimeter() {
-		return a + b + c;
-	}
+    public double perimeter() {
+        return a + b + c;
+    }
 
-	public double[] dot() {
+    public Dot dot() {                //точка пересечения медиан
 
-		double[] dot = new double[2];
+        Dot dot = new Dot();
+        Dot center = new Dot();
 
-		double centerX;
-		double centerY;
+        center.setX(dots[1].getX() - (dots[1].getX() - dots[0].getX()) / 2);
+        center.setY(dots[1].getY() - (dots[1].getY() - dots[0].getY()) / 2);
 
-		centerX = x[1] - (x[1] - x[0]) / 2;
-		centerY = y[1] - (y[1] - y[0]) / 2;
+        dot.setX(dots[2].getX() - (dots[2].getX() - center.getX()) * 2.0 / 3);
+        dot.setY(dots[2].getY() - (dots[2].getY() - center.getY()) * 2.0 / 3);
 
-		dot[0] = x[2] - (x[2] - centerX) * 2.0 / 3;
-		dot[1] = y[2] - (y[2] - centerY) * 2.0 / 3;
-
-		return dot;
-	}
+        return dot;
+    }
 
 }

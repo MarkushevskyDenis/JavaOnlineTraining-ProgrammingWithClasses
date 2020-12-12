@@ -2,67 +2,53 @@ package by.jonline.grow.programmingwithclass.exercise8;
 
 public class Bank {
 
-	Customer[] customer;
+    private Customer[] customer;
 
-	public Bank(Customer[] customer) {
-		this.customer = customer;
-	}
+    public Bank() {
 
-	void sortABC() {
+    }
 
-		for (int i = 0; i < customer.length - 1; i++) {
-			if (customer[i].getFullName().compareTo(customer[i + 1].getFullName()) > 0) {
-				swap(i);
-				i = -1;
-			}
-		}
+    public Bank(Customer[] customer) {
+        this.customer = customer;
+    }
 
-	}
+    public void sortABC() {
 
-	void sortCard(String min, String max) {
-		for (int i = 0; i < customer.length - 1; i++) {
+        Customer swap;
 
-			if (greater(customer[i].getBankCard(), min) && greater(max, customer[i].getBankCard())) {
+        for (int i = 0; i < customer.length - 1; i++) {
+            if (customer[i].getFullName().compareTo(customer[i + 1].getFullName()) > 0) {
 
-				System.out.println(customer[i].toString());
+                swap = customer[i];
+                customer[i] = customer[i + 1];
+                customer[i + 1] = swap;
 
-			}
+                i = -1;
 
-		}
-	}
+            }
+        }
 
-	boolean greater(String first, String second) {
+        out();
 
-		int one;
-		int two;
+    }
 
-		first = first.replaceAll(" ", "");
-		second = second.replaceAll(" ", "");
+    public void outCard(String min, String max) {
+        for (int i = 0; i < customer.length; i++) {
 
-		one = Integer.parseInt(first);
-		two = Integer.parseInt(second);
+            if (BankLogic.greater(customer[i].getBankCard(), min) && BankLogic.greater(max, customer[i].getBankCard())) {
 
-		if (one >= two) {
-			return true;
-		} else {
-			return false;
-		}
+                System.out.println(customer[i].toString());
 
-	}
+            }
 
-	void swap(int i) {
-		Customer swap;
+        }
+    }
 
-		swap = customer[i];
-		customer[i] = customer[i + 1];
-		customer[i + 1] = swap;
 
-	}
-
-	void out() {
-		for (int i = 0; i < customer.length; i++) {
-			System.out.println(customer[i].toString());
-		}
-	}
+    public void out() {
+        for (int i = 0; i < customer.length; i++) {
+            System.out.println(customer[i].toString());
+        }
+    }
 
 }

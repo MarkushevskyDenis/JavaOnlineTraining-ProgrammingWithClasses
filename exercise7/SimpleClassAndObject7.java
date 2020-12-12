@@ -5,14 +5,17 @@ package by.jonline.grow.programmingwithclass.exercise7;
  * площади, периметра и точки пересечения медиан.
  */
 public class SimpleClassAndObject7 {
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		double x[] = { -4, -6, 0 };
-		double y[] = { -483, 0, -5 };
+        Dot[] dots = new Dot[3];
 
-		Triangle tri = Triangle.compile(x, y);
-		double aaa[] = tri.dot();
-		System.out.print(aaa[0] + " " + aaa[1] + " " + tri.perimeter() + " " + tri.square());
-	}
+        dots[0] = new Dot(-4,-483);
+        dots[1] = new Dot(-6,0);
+        dots[2] = new Dot(0,-5);
+
+        Triangle tri = Triangle.compile(dots);
+
+        System.out.print(tri.dot() + " " + tri.perimeter() + " " + tri.square());
+    }
 }
 

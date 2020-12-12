@@ -1,7 +1,5 @@
 package by.jonline.grow.programmingwithclass.exercise10;
 
-import by.jonline.grow.programmingwithclass.exercise6.Time;
-
 /**
  * Создать класс Airline, спецификация которого приведена ниже. Определить конструкторы, set- и get- методы
  * и метод toString(). Создать второй класс, агрегирующий массив типа Airline, с подходящими конструкторами и

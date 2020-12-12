@@ -1,13 +1,21 @@
 package by.jonline.grow.programmingwithclass.exercise9;
 
 public class Library {
-	Book[] book;
+	private Book[] book;
 
 	public Library(Book[] book) {
 		this.book = book;
 	}
 
-	public void sortByAuthor(String author) {
+	public Book[] getBook() {
+		return book;
+	}
+
+	public void setBook(Book[] book) {
+		this.book = book;
+	}
+
+	public void outByAuthor(String author) {
 
 		for (int i = 0; i < book.length; i++) {
 
@@ -19,7 +27,7 @@ public class Library {
 
 	}
 
-	public void sortByPublishingHouse(String publishingHouse) {
+	public void outByPublishingHouse(String publishingHouse) {
 		for (int i = 0; i < book.length; i++) {
 
 			if (book[i].getPublishingHouse().equals(publishingHouse)) {
@@ -29,10 +37,10 @@ public class Library {
 		}
 	}
 
-	public void sortByYear(int year) {
+	public void outByYear(int year) {
 		for (int i = 0; i < book.length; i++) {
 
-			if (book[i].getYear() > year) {
+			if (book[i].getYear() >= year) {
 				System.out.println(book[i].toString());
 			}
 

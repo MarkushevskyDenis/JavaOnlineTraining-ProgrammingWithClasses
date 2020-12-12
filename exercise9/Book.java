@@ -6,7 +6,7 @@ public class Book {
 	private String author;
 	private String publishingHouse;
 	private int year;
-	private int count;
+	private int pages;
 	private double price;
 	private String type;
 
@@ -17,7 +17,7 @@ public class Book {
 		this.author = author;
 		this.publishingHouse = publishingHouse;
 		this.year = year;
-		this.count = count;
+		this.pages = count;
 		this.price = price;
 		this.type = type;
 	}
@@ -62,12 +62,12 @@ public class Book {
 		this.year = year;
 	}
 
-	public int getCount() {
-		return count;
+	public int getPages() {
+		return pages;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setPages(int pages) {
+		this.pages = pages;
 	}
 
 	public double getPrice() {
@@ -89,7 +89,7 @@ public class Book {
 	@Override
 	public String toString() {
 		return getClass().getSimpleName() + " [id=" + id + ", bookName=" + bookName + ", author=" + author + ", publishingHouse="
-				+ publishingHouse + ", year=" + year + ", count=" + count + ", price=" + price + ", type=" + type + "]";
+				+ publishingHouse + ", year=" + year + ", count=" + pages + ", price=" + price + ", type=" + type + "]";
 	}
 
 }

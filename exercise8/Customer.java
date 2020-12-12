@@ -1,22 +1,28 @@
 package by.jonline.grow.programmingwithclass.exercise8;
 
+import java.util.Objects;
+
 public class Customer {
 	
 	private int id;
 	private String lastName;
 	private String firstName;
 	private String patronymic;
-	private String adress;
+	private String address;
 	private String bankCard;
 	private String bankAccount;
 
-	public Customer(int id, String lastName, String firstName, String patronymic, String adress, String bankCard,
+	public Customer(){
+
+	}
+
+	public Customer(int id, String lastName, String firstName, String patronymic, String address, String bankCard,
 			String bankAccount) {
 		this.id = id;
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.patronymic = patronymic;
-		this.adress = adress;
+		this.address = address;
 		this.bankCard = bankCard;
 		this.bankAccount = bankAccount;
 	}
@@ -53,12 +59,12 @@ public class Customer {
 		this.patronymic = patronymic;
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getBankCard() {
@@ -90,12 +96,21 @@ public class Customer {
 	@Override
 	public String toString() {
 		return getClass().getSimpleName() + " [id=" + id + ", lastName=" + lastName + ", firstName=" + firstName
-				+ ", patronymic=" + patronymic + ", adress=" + adress + ", bankCard=" + bankCard + ", bankAccount="
+				+ ", patronymic=" + patronymic + ", adress=" + address + ", bankCard=" + bankCard + ", bankAccount="
 				+ bankAccount + "]";
 	}
 
 	public String getFullName() {
 		return lastName + " " + firstName + " " + patronymic;
+	}
+
+	public static void swap(Customer customer1, Customer customer2){
+		Customer swap;
+
+		swap = customer1;
+		customer1 = customer2;
+		customer2 = swap;
+
 	}
 
 }

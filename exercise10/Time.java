@@ -1,4 +1,4 @@
-package by.jonline.grow.programmingwithclass.exercise6;
+package by.jonline.grow.programmingwithclass.exercise10;
 
 public class Time {
     private int hour;
@@ -144,6 +144,41 @@ public class Time {
         System.out.print(hour / 10 + "" + (hour - (hour / 10) * 10) + "ч: ");
         System.out.print(minute / 10 + "" + (minute - (minute / 10) * 10) + "м: ");
         System.out.println(second / 10 + "" + (second - (second / 10) * 10) + "с");
+    }
+
+    @Override
+    public String toString() {
+        return "hour=" + hour +
+                ", minute=" + minute +
+                ", second=" + second;
+    }
+
+    public static boolean greater(Time first, Time second) {
+
+        if (first.getHour() > second.getHour()) {
+            return true;
+        } else if (first.getHour() < second.getHour()) {
+            return false;
+        } else {
+
+            if (first.getMinute() > second.getMinute()) {
+                return true;
+            } else if (first.getMinute() < second.getMinute()) {
+                return false;
+            } else {
+
+                if (first.getSecond() > second.getSecond()) {
+                    return true;
+                } else if (first.getSecond() < second.getSecond()) {
+                    return false;
+                } else {
+                    return false;
+                }
+
+            }
+
+        }
+
     }
 
 }

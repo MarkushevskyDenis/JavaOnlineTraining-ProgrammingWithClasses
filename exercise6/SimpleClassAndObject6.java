@@ -8,42 +8,24 @@ package by.jonline.grow.programmingwithclass.exercise6;
  */
 
 public class SimpleClassAndObject6 {
-	public static void main(String[] args) {
-		Time time = new Time();
+    public static void main(String[] args) {
 
-		for (int i = 0; i < 100; i++) {
-			time.reduceHour(i);
-			time.reduceMinute(i);
-			time.reduceSecond(i);
-			System.out.print("-" + i + "|||||");
-			time.out();
-		}
-		//часы
-		System.out.print("------------------------");
+        Time time = new Time(1, 1, 0);
 
-		while (time.getHour() != 1) {
-			while (time.getMinute() != 59) {
+		/*time.increaseHour(0);
+		time.increaseMinute(58);
+		time.increaseSecond(0);*/
 
-				while (time.getSecond() != 59) {
-					time.increaseSecond(1);
-					time.out();
-				}
-				time.increaseSecond(1);
-				
-				time.increaseMinute(1);
-				time.out();
-			}
 
-			while (time.getSecond() != 59) {
-				time.increaseSecond(1);
-				time.out();
-			}
-			time.increaseSecond(1);
+        time.reduceHour(0);
+        time.reduceMinute(2);
+        time.reduceSecond(2);
 
-			time.increaseMinute(1);
-			time.increaseHour(1);
-			time.out();
-		}
+        for (int i = 0; i<3600; i++) {
+            time.reduceSecond(1);
+            time.out();
+        }
 
-	}
+        time.out();
+    }
 }

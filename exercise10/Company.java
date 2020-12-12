@@ -1,6 +1,5 @@
 package by.jonline.grow.programmingwithclass.exercise10;
 
-import by.jonline.grow.programmingwithclass.exercise6.Time;
 
 public class Company {
 	Airline[] airline;

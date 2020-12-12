@@ -24,11 +24,11 @@ public class SimpleClassAndObject9 {
 		Library library = new Library(book);
 		library.out();
 		System.out.println("---------------------------");
-		library.sortByAuthor("Толстой1");
+		library.outByAuthor("Толстой1");
 		System.out.println("---------------------------");
-		library.sortByPublishingHouse("ОАО книга2");
+		library.outByPublishingHouse("ОАО книга2");
 		System.out.println("---------------------------");
-		library.sortByYear(2002);
+		library.outByYear(2002);
 
 	}
 }

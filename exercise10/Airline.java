@@ -1,6 +1,5 @@
 package by.jonline.grow.programmingwithclass.exercise10;
 
-import by.jonline.grow.programmingwithclass.exercise6.Time;
 
 public class Airline {
 	private String destination;
@@ -66,6 +65,6 @@ public class Airline {
 	@Override
 	public String toString() {
 		return "Airline [destination=" + destination + ", flightNum=" + flightNum + ", type=" + type + ", time="
-				+ time.out("asd")+ ", dayOfWeek=" + dayOfWeek + "]";
+				+ time.toString()+ ", dayOfWeek=" + dayOfWeek + "]";
 	}
 }
