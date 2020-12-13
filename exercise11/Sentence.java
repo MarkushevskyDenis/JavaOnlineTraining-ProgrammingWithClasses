@@ -5,24 +5,43 @@ public class Sentence {
 	private String sentence;
 	private Word[] word;
 
+	public Sentence(){
+
+	}
+
 	public Sentence(Sentence sentence) {
 		this.sentence = sentence.sentence;
 		this.word = sentence.word;
 	}
 
 	public Sentence(String sentence) {
-
 		this.sentence = sentence;
 		word = Word.getObject(sentence);
+	}
 
+	public String getSentence() {
+		return sentence;
+	}
+
+	public Word[] getWord() {
+		return word;
+	}
+
+	public void setSentence(String sentence) {
+		this.sentence = sentence;
+	}
+
+	public void setWord(Word[] word) {
+		this.word = word;
 	}
 
 	public static Sentence[] getObject(String text) {
 
 		String[] sentenceArr;
-		sentenceArr = getSentence(text);
+		Sentence[] sentence;
 
-		Sentence[] sentence = new Sentence[sentenceArr.length];
+		sentenceArr = splitText(text);
+		sentence = new Sentence[sentenceArr.length];
 
 		for (int i = 0; i < sentence.length; i++) {
 			sentence[i] = new Sentence(sentenceArr[i]);
@@ -31,10 +50,10 @@ public class Sentence {
 		return sentence;
 	}
 
-	public static String[] getSentence(String text) {
+	public static String[] splitText(String text) {
 
 		String[] sentenceArr = text.split("\\!\\s|\\.\\s|\\?\\s");
-		String[] punctuationMark = getPunctuationMark(text, sentenceArr.length);
+		String[] punctuationMark = getPunctuationMark(text);
 
 		for (int i = 0; i < sentenceArr.length; i++) {
 			sentenceArr[i] = sentenceArr[i].replaceAll("[!?.\t\n]", "") + punctuationMark[i];
@@ -42,9 +61,13 @@ public class Sentence {
 
 		return sentenceArr;
 	}
-	
-	private static String[] getPunctuationMark(String text, int size) {
-		String[] punctuationMark = new String[size];
+
+	private static String[] getPunctuationMark(String text) {
+		int size;
+		String[] punctuationMark;
+
+		size = text.split("\\!\\s|\\.\\s|\\?\\s").length;
+		punctuationMark = new String[size];
 
 		for (int i = 0; i < punctuationMark.length; i++) {
 			punctuationMark[i] = "";
@@ -64,19 +87,5 @@ public class Sentence {
 
 		return punctuationMark;
 	}
-
-	
-
-	/*
-	 * public String getSentence() { return sentence; }
-	 * 
-	 * public String[] getWord() {
-	 * 
-	 * String[] str = new String[word.length];
-	 * 
-	 * for (int i = 0; i < str.length; i++) { str[i] = word[i].getWord(); }
-	 * 
-	 * return str; }
-	 */
 
 }

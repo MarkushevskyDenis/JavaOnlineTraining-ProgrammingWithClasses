@@ -47,6 +47,11 @@ public class Country {
 	}
 
 	public int getCountOfRegion() {
+
+		if (region == null){
+			return 0;
+		}
+
 		return region.length;
 	}
 

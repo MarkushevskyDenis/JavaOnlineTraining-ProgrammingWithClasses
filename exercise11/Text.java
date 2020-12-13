@@ -21,25 +21,31 @@ public class Text {
 		sentence = Sentence.getObject(text);
 	}
 
-	/*
-	 * 
-	 * public String[] getSentence() {
-	 * 
-	 * String[] str = new String[sentence.length]; for (int i = 0; i < str.length;
-	 * i++) { str[i] = sentence[i].getSentence(); }
-	 * 
-	 * return str; }
-	 * 
-	 * public String[][] getWord() {
-	 * 
-	 * String[][] str = new String[sentence.length][];
-	 * 
-	 * for (int i = 0; i < str.length; i++) { str[i] = sentence[i].getWord(); }
-	 * 
-	 * return str; }
-	 */
+	public String getText() {
+		return text;
+	}
 
-	public void add(String str) {
+	public String getTitle() {
+		return title;
+	}
+
+	public Sentence[] getSentence() {
+		return sentence;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setSentence(Sentence[] sentence) {
+		this.sentence = sentence;
+	}
+
+	public void addSentence(String str) {
 
 		Sentence[] copy = sentence;
 
@@ -54,11 +60,4 @@ public class Text {
 
 	}
 
-	public void outText() {
-		System.out.println(text);
-	}
-
-	public void outTitle() {
-		System.out.println(title);
-	}
 }

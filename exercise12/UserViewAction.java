@@ -1,11 +1,11 @@
 package by.jonline.grow.programmingwithclass.exercise12;
 
 public class UserViewAction {
-	public void outModel(Car car) {
+	public static void outModel(Car car) {
 		System.out.println("model = " + car.getModel());
 	}
 
-	public void checkWheel(Car car) {
+	public static void checkWheel(Car car) {
 
 		boolean q = true;
 		Wheel[] wheel = car.getWheel();

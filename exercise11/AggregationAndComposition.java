@@ -10,9 +10,9 @@ public class AggregationAndComposition {
 
 		Text text = new Text("Тестовый текст. Тестовый текст1. Тестовый текст2. Тестовый текст3.", "Текст");
 
-		text.outText();
-		text.add("Тестовый текст4.");
-		text.outText();
-		text.outTitle();
+		text.getText();
+		text.addSentence("Тестовый текст4.");
+		text.getText();
+		text.getTitle();
 	}
 }

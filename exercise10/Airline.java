@@ -4,16 +4,16 @@ package by.jonline.grow.programmingwithclass.exercise10;
 public class Airline {
 	private String destination;
 	private String flightNum;
-	private String type;
+	private String airplaneType;
 	private Time time;
-	private String dayOfWeek;
+	private String daysOfWeek;
 
 	public Airline(String destination, String flightNum, String type, Time time, String dayOfWeek) {
 		this.destination = destination;
 		this.flightNum = flightNum;
-		this.type = type;
+		this.airplaneType = type;
 		this.time = time;
-		this.dayOfWeek = dayOfWeek;
+		this.daysOfWeek = dayOfWeek;
 	}
 
 	public String getDestination() {
@@ -32,12 +32,12 @@ public class Airline {
 		this.flightNum = flightNum;
 	}
 
-	public String getType() {
-		return type;
+	public String getAirplaneType() {
+		return airplaneType;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setAirplaneType(String airplaneType) {
+		this.airplaneType = airplaneType;
 	}
 
 	public Time getTime() {
@@ -48,14 +48,14 @@ public class Airline {
 		this.time = time;
 	}
 
-	public String getDayOfWeek() {
-		return dayOfWeek;
+	public String getDaysOfWeek() {
+		return daysOfWeek;
 	}
 
-	public void setDayOfWeek(String dayOfWeek) {
+	public void setDaysOfWeek(String daysOfWeek) {
 
-		if (dayOfWeek.matches("(\\w+/)+")) {
-			this.dayOfWeek = dayOfWeek;
+		if (daysOfWeek.matches("^(\\w+/?)+?$")) {
+			this.daysOfWeek = daysOfWeek;
 		} else {
 			System.out.println("error");
 		}
@@ -64,7 +64,7 @@ public class Airline {
 
 	@Override
 	public String toString() {
-		return "Airline [destination=" + destination + ", flightNum=" + flightNum + ", type=" + type + ", time="
-				+ time.toString()+ ", dayOfWeek=" + dayOfWeek + "]";
+		return "Airline [destination=" + destination + ", flightNum=" + flightNum + ", type=" + airplaneType + ", time="
+				+ time.toString()+ ", dayOfWeek=" + daysOfWeek + "]";
 	}
 }

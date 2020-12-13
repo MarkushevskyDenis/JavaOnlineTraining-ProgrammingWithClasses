@@ -41,7 +41,5 @@ public class Engine {
 	public boolean isStart() {
 		return start;
 	}
-	
-	
 
 }

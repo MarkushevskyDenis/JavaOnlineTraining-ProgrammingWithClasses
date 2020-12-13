@@ -2,73 +2,108 @@ package by.jonline.grow.programmingwithclass.exercise10;
 
 
 public class Company {
-	Airline[] airline;
+    Airline[] airline;
 
-	public Company(Airline[] airline) {
-		this.airline = airline;
-	}
+    public Company(Airline[] airline) {
+        this.airline = airline;
+    }
 
-	public void sortByDestination(String destination) {
-		for (int i = 0; i < airline.length; i++) {
+    public void outByDestination(String destination) {
 
-			if (airline[i].getDestination().equals(destination)) {
-				System.out.println(airline[i].toString());
-			}
+        boolean q = true;
 
-		}
-	}
+        for (int i = 0; i < airline.length; i++) {
 
-	public void sortByDayOfWeek(String dayOfWeek) {
-		String[] str;
+            if (airline[i].getDestination().equals(destination)) {
+                System.out.println(airline[i].toString());
+                q = false;
+            }
 
-		for (int i = 0; i < airline.length; i++) {
-			str = airline[i].getDayOfWeek().split("/");
+        }
 
-			for (int j = 0; j < str.length; j++) {
+        if (q) {
+            System.out.println("ничего");
+        }
 
-				if (str[j].equals(dayOfWeek)) {
-					System.out.println(airline[i].toString());
-					break;
-				}
+    }
 
-			}
+    public void outByDayOfWeek(String dayOfWeek) {
+        String[] str;
+        boolean q = true;
+        for (int i = 0; i < airline.length; i++) {
+            str = airline[i].getDaysOfWeek().split("/");
 
-		}
+            for (int j = 0; j < str.length; j++) {
 
-	}
+                if (str[j].equals(dayOfWeek)) {
+                    System.out.println(airline[i].toString());
+                    q = false;
+                    break;
+                }
 
-	public void sortByDayOfWeek(String dayOfWeek, Airline airline) {
-		String[] str;
+            }
 
-		str = airline.getDayOfWeek().split("/");
+        }
 
-		for (int i = 0; i < str.length; i++) {
+        if (q) {
+            System.out.println("ничего");
+        }
 
-			if (str[i].equals(dayOfWeek)) {
-				System.out.println(airline.toString());
-				break;
-			}
+    }
 
-		}
+    public void outByDayOfWeek(String dayOfWeek, Airline airline) {
+        String[] str;
+        boolean q = true;
 
-	}
+        str = airline.getDaysOfWeek().split("/");
 
-	public void sortByTimeAndDayOfweek(String dayOfWeek, Time time) {
+        for (int i = 0; i < str.length; i++) {
 
-		for (int i = 0; i < airline.length; i++) {
+            if (str[i].equals(dayOfWeek)) {
+                System.out.println(airline.toString());
+                q = false;
+                break;
+            }
 
-			if (Time.greater(airline[i].getTime(), time)) {
-				sortByDayOfWeek(dayOfWeek, airline[i]);
-			}
+        }
 
-		}
+        if (q){
+            System.out.println("ничего");
+        }
 
-	}
+    }
 
-	public void out() {
-		for (int i = 0; i < airline.length; i++) {
-			System.out.println(airline[i].toString());
-		}
-	}
-	
+    public void outByTimeAndDayOfWeek(String dayOfWeek, Time time) {
+        boolean q = true;
+
+        for (int i = 0; i < airline.length; i++) {
+
+            if (Time.greater(airline[i].getTime(), time)) {
+                outByDayOfWeek(dayOfWeek, airline[i]);
+                q = false;
+            }
+
+        }
+
+        if (q){
+            System.out.println("ничего");
+        }
+
+    }
+
+    public void out() {
+
+        boolean q = true;
+
+        for (int i = 0; i < airline.length; i++) {
+            System.out.println(airline[i].toString());
+            q = false;
+        }
+
+        if (q){
+            System.out.println("ничего");
+        }
+
+    }
+
 }

@@ -4,6 +4,10 @@ public class Word {
 
 	private String word;
 
+	public Word(){
+
+	}
+
 	public Word(String word) {
 		this.word = word;
 	}
@@ -11,7 +15,7 @@ public class Word {
 	public static Word[] getObject(String sentence) {
 
 		String[] wordArr;
-		wordArr = getWord(sentence);
+		wordArr = splitSentence(sentence);
 
 		Word[] word = new Word[wordArr.length];
 
@@ -22,11 +26,15 @@ public class Word {
 		return word;
 	}
 
-	public static String[] getWord(String sentence) {
+	public static String[] splitSentence(String sentence) {
 		return sentence.replaceAll("[\n\t!\"#$%&'()*+,.:;<=>?@\\[\\]\\\\^_`{|}~]", "").split(" ");
 	}
 
-	/*
-	 * public String getWord() { return word; }
-	 */
+	public String getWord() {
+		return word;
+	}
+
+	public void setWord(String word) {
+		this.word = word;
+	}
 }

@@ -5,9 +5,9 @@ public class Car {
 	private Engine engine;
 	private Wheel[] wheel;
 	private String model;
-	private double fuelVolume;
-	private double fuelConsumption;
-	private double tankVolume;
+	private double fuelVolume;      //количество топлива в данный момент времени
+	private double fuelConsumption;	//расход топлива
+	private double tankVolume;		//объем бензобака
 
 	{
 		wheel = new Wheel[5];
@@ -15,7 +15,6 @@ public class Car {
 		wheel[1] = new Wheel("front right");
 		wheel[2] = new Wheel("rear left");
 		wheel[3] = new Wheel("rear right");
-
 	}
 
 	public Car(Engine engine, Wheel wheel, String model, double fuelVolume, double fuelConsumption, double tankVolume) {
@@ -41,9 +40,9 @@ public class Car {
 			return 0.0;
 		}
 
-		maxDistance = 100 * fuelVolume / (fuelConsumption + fuelConsumptionFine());
-
+		maxDistance = 100 * fuelVolume / (fuelConsumption + fuelConsumptionFine()); //расчет макмимальной дистанции с учетом штрафа
 		punctureWheel();
+
 		if (maxDistance > distance) {
 			fuelVolume -= distance * (fuelConsumption + fuelConsumptionFine()) / 100;
 			stopEngine();
@@ -72,7 +71,7 @@ public class Car {
 
 	}
 
-	public double fuelConsumptionFine() {
+	public double fuelConsumptionFine() {						//штраф за пробитое колесо
 
 		double fuelConsumptionFine = 0;
 
@@ -88,11 +87,12 @@ public class Car {
 
 	public void changeWheel(String wheelName) {
 
-		Wheel wheel = null;
+		Wheel wheel;
 
 		wheel = CarLogic.findWheelByName(this.wheel, wheelName);
 
 		if (wheel == null) {
+			System.out.println("nothing");
 			return;
 		}
 
@@ -110,17 +110,22 @@ public class Car {
 
 	}
 
-	public void fixWheel() {
+	public void fixWheel(Wheel wheel) {
 
-		if (wheel[4].getPuncture() == true) {
-			wheel[4].fixWheel();
+		if (wheel == null){
+			System.out.println("nothing");
+			return;
+		}
+
+		if (wheel.getPuncture() == true) {
+			wheel.fixWheel();
 			System.out.println("wheel repaired");
 		} else {
 			System.out.println("fixWheel is not necessary");
 		}
 	}
 
-	public void punctureWheel() {
+	public void punctureWheel() {					//случайно пробить колесо
 		for (int i = 0; i < 4; i++) {
 			if (CarLogic.rand()) {
 				wheel[i].punctureWheel();

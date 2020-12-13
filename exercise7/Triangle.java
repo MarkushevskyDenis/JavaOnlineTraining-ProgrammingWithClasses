@@ -22,7 +22,7 @@ public class Triangle {
 
     public static Triangle compile(Dot[] dots) {
         if (dots.length != 3 || dots.length != 3) {
-            System.out.println("объект не был создан");
+            System.out.println("РѕР±СЉРµРєС‚ РЅРµ Р±С‹Р» СЃРѕР·РґР°РЅ");
             return null;
         }
         return new Triangle(dots);
@@ -44,7 +44,7 @@ public class Triangle {
         return a + b + c;
     }
 
-    public Dot dot() {                //точка пересечения медиан
+    public Dot dot() {                //С‚РѕС‡РєР° РїРµСЂРµСЃРµС‡РµРЅРёСЏ РјРµРґРёР°РЅ
 
         Dot dot = new Dot();
         Dot center = new Dot();
