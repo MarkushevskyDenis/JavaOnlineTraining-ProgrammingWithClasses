@@ -5,15 +5,15 @@ public class BankAccount {
 	private String accountCode;
 	private double money;
 	private boolean active;
+	private int customerId;
 
 	{
 		active = false;
 	}
 
-	public BankAccount(String accountCode, double money, boolean active) {
+	public BankAccount(String accountCode, int customerId) {
 		this.accountCode = accountCode;
-		this.money = money;
-		this.active = active;
+		this.customerId = customerId;
 	}
 
 	public String getAccountCode() {
@@ -40,6 +40,11 @@ public class BankAccount {
 		this.active = active;
 	}
 
+	public int getCustomerId() {
+		return customerId;
+	}
 
-	
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
 }

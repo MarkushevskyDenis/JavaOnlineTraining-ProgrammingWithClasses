@@ -10,34 +10,26 @@ public class AggregationAndComposition {
 	public static void main(String[] args) {
 		Bank bank = new Bank("a");
 		Customer customer = new Customer("Denis", "Markushevsky", "Andreevich");
+		Customer customer1 = new Customer("Denis", "Markushevsky", "Andreevich");
 
-		customer.createAccount(bank);
-		customer.createAccount(bank);
-		customer.createAccount(bank);
+		bank.createAccount(customer1);
+		bank.createAccount(customer);
+
+		bank.activateAccount(customer1, "a10");
+		bank.activateAccount(customer, "a01");
+
+		bank.addMoney(customer1,"a10", 500);
+		bank.getMoney(customer,"a01",500);
 
 
-		customer.blockAccount("a", bank);
-		customer.activateAccount("a0", bank);
-		customer.activateAccount("a1", bank);
-		customer.activateAccount("a", bank);
+		System.out.println(bank.allMoney(customer));
+		System.out.println(bank.allNegativeMoney(customer));
+		System.out.println(bank.allPositiveMoney(customer));
 
 
-		customer.addMoney("a0", bank, 100);
-		customer.addMoney("a0", bank, 100);
-
-		customer.getMoney("a", bank, 150);
-		customer.getMoney("a1", bank, 100);
-		customer.getMoney("a1", bank, 100);
-
-		customer.addMoney("a", bank, 100);
-		customer.getMoney("a2", bank, 100);
-		customer.getMoney("a2", bank, 100);
-		customer.addMoney("a2", bank, 100);
-
-		
-		System.out.println(customer.allMoney());
-		System.out.println(customer.allNegativeMoney());
-		System.out.println(customer.allPositiveMoney());
+		System.out.println(bank.allMoney(customer1));
+		System.out.println(bank.allNegativeMoney(customer1));
+		System.out.println(bank.allPositiveMoney(customer1));
 
 	}
 }

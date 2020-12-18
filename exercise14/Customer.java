@@ -1,18 +1,70 @@
 package by.jonline.grow.programmingwithclass.exercise14;
 
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Customer {
 
-	private int bankAccountId;
+	private static int i;
+	private int id;
 	private String lastName;
 	private String firstName;
 	private String patronymic;
-	private BankAccount[] bankAccount;
 
+	public Customer(String lastName, String firstName, String patronymic) {
+		this.id = i;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.patronymic = patronymic;
+		i++;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setPatronymic(String patronymic) {
+		this.patronymic = patronymic;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getPatronymic() {
+		return patronymic;
+	}
+
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Customer customer = (Customer) o;
+		return id == customer.id;
+	}
+
+/*
 	{
+		id = 0;
 		bankAccountId = 0;
 		bankAccount = new BankAccount[5];
 	}
@@ -104,33 +156,7 @@ public class Customer {
 		return matcher.group();
 	}
 
-	public double allMoney() {
-		double sum = 0;
-		for (int i = 0; i < bankAccount.length && bankAccount[i] != null; i++) {
-			sum += bankAccount[i].getMoney();
-		}
-		return sum;
-	}
 
-	public double allPositiveMoney() {
-		double sum = 0;
-		for (int i = 0; i < bankAccount.length && bankAccount[i] != null; i++) {
-			if (bankAccount[i].getMoney() > 0) {
-				sum += bankAccount[i].getMoney();
-			}
-		}
-		return sum;
-	}
-
-	public double allNegativeMoney() {
-		double sum = 0;
-		for (int i = 0; i < bankAccount.length && bankAccount[i] != null; i++) {
-			if (bankAccount[i].getMoney() < 0) {
-				sum += bankAccount[i].getMoney();
-			}
-		}
-		return sum;
-	}
 
 	public void activateAccount(String accountCode, Bank bank) {
 		bank.activateAccount(findAccount(accountCode));
@@ -156,5 +182,5 @@ public class Customer {
 		}
 		return null;
 	}
-
+	*/
 }
