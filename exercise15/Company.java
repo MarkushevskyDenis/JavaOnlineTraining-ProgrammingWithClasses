@@ -16,14 +16,14 @@ public class Company {
 			return;
 		}
 
-		Tour[] consilience = new Tour[tour.length];
+		Tour[] consilience;
 		consilience = Arrays.copyOf(tour, tour.length);
 
-		getByType(type, consilience);
-		getByVehicle(vehicle, consilience);
-		getByFood(food, consilience);
-		getByDay(day, consilience);
-		getByCost(cost, consilience);
+		removeByType(type, consilience);
+		removeByVehicle(vehicle, consilience);
+		removeByFood(food, consilience);
+		removeByDay(day, consilience);
+		removeByCost(cost, consilience);
 
 		for (int i = 0; i < consilience.length; i++) {
 			if (consilience[i] != null) {
@@ -33,7 +33,13 @@ public class Company {
 
 	}
 
-	private void getByType(String type, Tour[] consilience) {
+	public void out(){
+		for (int i = 0; i < tour.length; i++){
+			System.out.println(tour[i].toString());
+		}
+	}
+
+	private void removeByType(String type, Tour[] consilience) {
 
 		for (int i = 0; i < tour.length; i++) {
 			if (type.equals("")) {
@@ -47,7 +53,7 @@ public class Company {
 
 	}
 
-	private void getByVehicle(String vehicle, Tour[] consilience) {
+	private void removeByVehicle(String vehicle, Tour[] consilience) {
 
 		for (int i = 0; i < tour.length; i++) {
 			if (vehicle.equals("")) {
@@ -61,7 +67,7 @@ public class Company {
 
 	}
 
-	private void getByFood(String food, Tour[] consilience) {
+	private void removeByFood(String food, Tour[] consilience) {
 
 		for (int i = 0; i < tour.length; i++) {
 			if (food.equals("")) {
@@ -75,7 +81,7 @@ public class Company {
 
 	}
 
-	private void getByDay(int day, Tour[] consilience) {
+	private void removeByDay(int day, Tour[] consilience) {
 
 		for (int i = 0; i < tour.length; i++) {
 			if (day <= 0) {
@@ -89,7 +95,7 @@ public class Company {
 
 	}
 
-	private void getByCost(double cost, Tour[] consilience) {
+	private void removeByCost(double cost, Tour[] consilience) {
 
 		for (int i = 0; i < tour.length; i++) {
 			if (cost < 0) {
