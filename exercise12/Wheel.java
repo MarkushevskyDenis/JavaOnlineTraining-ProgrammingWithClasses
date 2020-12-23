@@ -10,24 +10,6 @@ public class Wheel {
 		puncture = false;
 	}
 
-	public void fixWheel() {
-		puncture = false;
-	}
-
-	public void changeWheel(Wheel wheel) {
-		
-		boolean copyPunc;
-
-		copyPunc = wheel.puncture;
-		wheel.puncture = this.puncture;
-		this.puncture = copyPunc;
-
-	}
-
-	public void punctureWheel() {
-		this.puncture = true;
-	}
-
 	public boolean getPuncture() {
 		return puncture;
 	}
@@ -38,6 +20,10 @@ public class Wheel {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void setPuncture(boolean puncture) {
+		this.puncture = puncture;
 	}
 
 }

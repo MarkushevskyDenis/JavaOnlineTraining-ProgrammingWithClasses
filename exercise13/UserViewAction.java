@@ -7,7 +7,7 @@ public class UserViewAction {
 	}
 
 	public void outCountOfRegion(Country country) {
-		System.out.println("In " + country.getName() + " " + country.getCountOfRegion() + " region(s)");
+		System.out.println("In " + country.getName() + " " + country.getCountOfRegions() + " region(s)");
 	}
 
 	public void outTotalArea(Country country) {
@@ -15,7 +15,7 @@ public class UserViewAction {
 	}
 
 	public void outRegionalCenter(Country country) {
-		Region[] region = country.getRegion();
+		Region[] region = country.getRegions();
 
 		for (int i = 0; i < region.length; i++) {
 			System.out.println(region[i].getRegionalCenter() + " is the region center of " + region[i].getName());

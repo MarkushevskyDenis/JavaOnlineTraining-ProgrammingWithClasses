@@ -13,16 +13,8 @@ public class Engine {
 		this.fuelType = fuelType;
 		this.start = false;
 	}
-
-	public String getFuelType() {
-		return fuelType;
-	}
-
-	public void setFuelType(String fuelType) {
-		this.fuelType = fuelType;
-	}
-
-	public boolean startEngine() {
+/*
+public boolean startEngine() {
 		if (start == true) {
 			return false;
 		}
@@ -37,9 +29,36 @@ public class Engine {
 		start = false;
 		return true;
 	}
+ */
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public void setEngineCapacity(double engineCapacity) {
+		this.engineCapacity = engineCapacity;
+	}
+
+	public void setFuelType(String fuelType) {
+		this.fuelType = fuelType;
+	}
+
+	public void setStart(boolean start) {
+		this.start = start;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public double getEngineCapacity() {
+		return engineCapacity;
+	}
+
+	public String getFuelType() {
+		return fuelType;
+	}
 
 	public boolean isStart() {
 		return start;
 	}
-
 }

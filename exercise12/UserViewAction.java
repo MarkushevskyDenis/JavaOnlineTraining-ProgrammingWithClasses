@@ -1,14 +1,15 @@
 package by.jonline.grow.programmingwithclass.exercise12;
 
 public class UserViewAction {
-	public static void outModel(Car car) {
+
+	public void outModel(Car car) {
 		System.out.println("model = " + car.getModel());
 	}
 
-	public static void checkWheel(Car car) {
+	public void checkWheels(Car car) {
 
 		boolean q = true;
-		Wheel[] wheel = car.getWheel();
+		Wheel[] wheel = car.getWheels();
 
 		for (int i = 0; i < 5; i++) {
 			if (wheel[i].getPuncture() == true) {

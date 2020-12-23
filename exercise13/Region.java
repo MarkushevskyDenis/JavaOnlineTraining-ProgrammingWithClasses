@@ -4,12 +4,12 @@ public class Region {
 
 	private String name;
 	private String regionalCenter;
-	private District[] district;
+	private District[] districts;
 
 	public Region(String name, String regionalCenter, District... district) {
 		this.name = name;
 		this.regionalCenter = regionalCenter;
-		this.district = district;
+		this.districts = district;
 	}
 
 	public String getName() {
@@ -28,12 +28,12 @@ public class Region {
 		this.regionalCenter = regionalCenter;
 	}
 
-	public District[] getDistrict() {
-		return district;
+	public District[] getDistricts() {
+		return districts;
 	}
 
-	public void setDistrict(District[] district) {
-		this.district = district;
+	public void setDistricts(District[] districts) {
+		this.districts = districts;
 	}
 
 

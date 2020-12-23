@@ -19,22 +19,6 @@ public class Sentence {
 		word = Word.getObject(sentence);
 	}
 
-	public String getSentence() {
-		return sentence;
-	}
-
-	public Word[] getWord() {
-		return word;
-	}
-
-	public void setSentence(String sentence) {
-		this.sentence = sentence;
-	}
-
-	public void setWord(Word[] word) {
-		this.word = word;
-	}
-
 	public static Sentence[] getObject(String text) {
 
 		String[] sentenceArr;
@@ -86,6 +70,23 @@ public class Sentence {
 		}
 
 		return punctuationMark;
+	}
+
+
+	public String getSentence() {
+		return sentence;
+	}
+
+	public Word[] getWord() {
+		return word;
+	}
+
+	public void setSentence(String sentence) {
+		this.sentence = sentence;
+	}
+
+	public void setWord(Word[] word) {
+		this.word = word;
 	}
 
 }

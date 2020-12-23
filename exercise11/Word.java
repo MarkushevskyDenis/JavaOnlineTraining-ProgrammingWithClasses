@@ -30,6 +30,7 @@ public class Word {
 		return sentence.replaceAll("[\n\t!\"#$%&'()*+,.:;<=>?@\\[\\]\\\\^_`{|}~]", "").split(" ");
 	}
 
+
 	public String getWord() {
 		return word;
 	}
@@ -37,4 +38,5 @@ public class Word {
 	public void setWord(String word) {
 		this.word = word;
 	}
+
 }

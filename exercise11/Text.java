@@ -21,6 +21,22 @@ public class Text {
 		sentence = Sentence.getObject(text);
 	}
 
+	public void addSentence(String str) {
+
+		Sentence[] copy = sentence;
+
+		sentence = new Sentence[copy.length + 1];
+
+		for (int i = 0; i < copy.length; i++) {
+			sentence[i] = new Sentence(copy[i]);
+		}
+
+		sentence[sentence.length - 1] = new Sentence(str);
+		text += " " + str;
+
+	}
+
+
 	public String getText() {
 		return text;
 	}
@@ -43,21 +59,6 @@ public class Text {
 
 	public void setSentence(Sentence[] sentence) {
 		this.sentence = sentence;
-	}
-
-	public void addSentence(String str) {
-
-		Sentence[] copy = sentence;
-
-		sentence = new Sentence[copy.length + 1];
-
-		for (int i = 0; i < copy.length; i++) {
-			sentence[i] = new Sentence(copy[i]);
-		}
-
-		sentence[sentence.length - 1] = new Sentence(str);
-		text += " " + str;
-
 	}
 
 }
