@@ -14,24 +14,26 @@ package by.jonline.grow.programmingwithclass.exercise10;
 public class SimpleClassAndObject10 {
 	public static void main(String[] arg) {
 
-		Airline[] airline1 = new Airline[10];
-		for (int i = 0; i < airline1.length; i++) {
+		Airline[] airlines = new Airline[10];
+		for (int i = 0; i < airlines.length; i++) {
 			if (i > 5) {
-				airline1[i] = new Airline("Minsk" + i, "№" + i, "air" + i, new Time(12, 52, 0 + i), "sun/tue");
+				airlines[i] = new Airline("Minsk" + i, "№" + i, "air" + i, new Time(12, 52, 0 + i), "sun/tue");
 				continue;
 			}
-			airline1[i] = new Airline("Minsk" + i, "№" + i, "air" + i, new Time(12, 52, 0 + i), "mon");
+			airlines[i] = new Airline("Minsk" + i, "№" + i, "air" + i, new Time(12, 52, 0 + i), "mon");
 		}
-		Company company1 = new Company(airline1);
-		company1.out();
+		Company company = new Company(airlines);
+		View view = new View();
+
+		view.out(company);
 		System.out.println("-------------------");
-		company1.outByDayOfWeek("mon");
+		view.outByDayOfWeek(company,"mon");
 		System.out.println("-------------------");
-		company1.outByDayOfWeek("tue");
+		view.outByDayOfWeek(company,"tue");
 		System.out.println("-------------------");
-		company1.outByDestination("Minsk2");
+		view.outByDestination(company,"Minsk2");
 		System.out.println("-------------------");
-		company1.outByTimeAndDayOfWeek("tue", new Time(12, 52, 7));
+		view.outByTimeAndDayOfWeek(company,"tue", new Time(1, 52, 7));
 
 	}
 }

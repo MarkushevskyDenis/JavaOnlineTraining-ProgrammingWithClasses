@@ -64,7 +64,7 @@ public class Airline {
 
 	@Override
 	public String toString() {
-		return "Airline [destination=" + destination + ", flightNum=" + flightNum + ", type=" + airplaneType + ", time="
+		return getClass().getSimpleName() + "[destination=" + destination + ", flightNum=" + flightNum + ", type=" + airplaneType + ", time="
 				+ time.toString()+ ", dayOfWeek=" + daysOfWeek + "]";
 	}
 }

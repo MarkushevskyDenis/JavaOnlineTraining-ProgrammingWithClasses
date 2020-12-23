@@ -30,28 +30,6 @@ public class Time {
         this.hour = hour;
     }
 
-    public void increaseHour(int i) {
-        int k;
-
-        hour += i;
-        if (hour > 23) {
-            k = hour / 24;
-            hour -= 24 * k;
-        }
-
-    }
-
-    public void reduceHour(int i) {
-        int k;
-
-        hour -= i;
-        if (hour < 0) {
-            k = Math.abs(hour / 24) + 1;
-            hour += 24 * k;
-        }
-
-    }
-
     public int getMinute() {
         return minute;
     }
@@ -67,33 +45,6 @@ public class Time {
         this.minute = minute;
     }
 
-    public void increaseMinute(int i) {
-        int k;
-
-        minute += i;
-        if (minute > 59) {
-            k = minute / 60;
-            minute -= 60 * k;
-
-            increaseHour(k);
-
-        }
-
-    }
-
-    public void reduceMinute(int i) {
-        int k;
-
-        minute -= i;
-        if (minute < 0) {
-            k = Math.abs(minute / 60) + 1;
-            minute += 60 * k;
-
-            reduceHour(k);
-        }
-
-    }
-
     public int getSecond() {
         return second;
     }
@@ -107,37 +58,6 @@ public class Time {
         }
 
         this.second = second;
-    }
-
-    public void increaseSecond(int i) {
-        int k;
-
-        second += i;
-        if (second > 59) {
-
-            k = second / 60;
-            second -= 60 * k;
-
-            increaseMinute(k);
-
-        }
-
-
-    }
-
-    public void reduceSecond(int i) {
-        int k;
-
-        second -= i;
-        if (second < 0) {
-            k = Math.abs(second / 60) + 1;
-            second += 60 * k;
-
-            reduceMinute(k);
-        }
-
-
-
     }
 
     public void out() {

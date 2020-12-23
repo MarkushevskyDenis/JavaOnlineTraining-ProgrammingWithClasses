@@ -1,116 +1,125 @@
 package by.jonline.grow.programmingwithclass.exercise8;
 
-import java.util.Objects;
 
 public class Customer {
-	
-	private int id;
-	private String lastName;
-	private String firstName;
-	private String patronymic;
-	private String address;
-	private String bankCard;
-	private String bankAccount;
 
-	public Customer(){
+    private int id;
+    private String lastName;
+    private String firstName;
+    private String patronymic;
+    private String address;
+    private String bankCard;
+    private String bankAccount;
 
-	}
+    public Customer() {
 
-	public Customer(int id, String lastName, String firstName, String patronymic, String address, String bankCard,
-			String bankAccount) {
-		this.id = id;
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.patronymic = patronymic;
-		this.address = address;
-		this.bankCard = bankCard;
-		this.bankAccount = bankAccount;
-	}
+    }
 
-	public int getId() {
-		return id;
-	}
+    public Customer(int id, String lastName, String firstName, String patronymic, String address, String bankCard,
+                    String bankAccount) {
+        this.id = id;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.patronymic = patronymic;
+        this.address = address;
+        setBankCard(bankCard);
+        setBankAccount(bankAccount);
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getPatronymic() {
-		return patronymic;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setPatronymic(String patronymic) {
-		this.patronymic = patronymic;
-	}
+    public String getPatronymic() {
+        return patronymic;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public String getBankCard() {
-		return bankCard;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public void setBankCard(String bankCard) {
+    public String getBankCard() {
+        return bankCard;
+    }
 
-		if (bankCard.matches("(\\d{4} ){3}\\d{4}")) {
-			this.bankCard = bankCard;
-		} else {
-			System.out.println("error");
-		}
-	}
+    public void setBankCard(String bankCard) {
 
-	public String getBankAccount() {
-		return bankAccount;
-	}
+        if (bankCard.matches("(\\d{4} ){3}\\d{4}")) {
+            this.bankCard = bankCard;
+        } else {
+            System.out.println("error");
+        }
+    }
 
-	public void setBankAccount(String bankAccount) {
+    public String getBankAccount() {
+        return bankAccount;
+    }
 
-		if (bankAccount.matches("BY \\d{2} \\w{4} \\d{4} (\\d{4} ){3}\\d{4}")) {
-			this.bankAccount = bankAccount;
-		} else {
-			System.out.println("error");
-		}
-	}
+    public void setBankAccount(String bankAccount) {
 
-	@Override
-	public String toString() {
-		return getClass().getSimpleName() + " [id=" + id + ", lastName=" + lastName + ", firstName=" + firstName
-				+ ", patronymic=" + patronymic + ", adress=" + address + ", bankCard=" + bankCard + ", bankAccount="
-				+ bankAccount + "]";
-	}
+        if (bankAccount.matches("BY \\d{2} \\w{4} \\d{4} (\\d{4} ){3}\\d{4}")) {
+            this.bankAccount = bankAccount;
+        } else {
+            System.out.println("error");
+        }
+    }
 
-	public String getFullName() {
-		return lastName + " " + firstName + " " + patronymic;
-	}
+    public String getFullName() {
+        return lastName + " " + firstName + " " + patronymic;
+    }
 
-	public static void swap(Customer customer1, Customer customer2){
-		Customer swap;
+    public static boolean greaterBankCard(String first, String second) {
 
-		swap = customer1;
-		customer1 = customer2;
-		customer2 = swap;
+        int one;
+        int two;
 
-	}
+        first = first.replaceAll(" ", "");
+        second = second.replaceAll(" ", "");
+
+        one = Integer.parseInt(first);
+        two = Integer.parseInt(second);
+
+        if (one >= two) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + " [id=" + id + ", lastName=" + lastName + ", firstName=" + firstName
+                + ", patronymic=" + patronymic + ", adress=" + address + ", bankCard=" + bankCard + ", bankAccount="
+                + bankAccount + "]";
+    }
 
 }

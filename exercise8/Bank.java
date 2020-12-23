@@ -2,53 +2,21 @@ package by.jonline.grow.programmingwithclass.exercise8;
 
 public class Bank {
 
-    private Customer[] customer;
+    private Customer[] customers;
 
     public Bank() {
 
     }
 
-    public Bank(Customer[] customer) {
-        this.customer = customer;
+    public Bank(Customer[] customers) {
+        this.customers = customers;
     }
 
-    public void sortABC() {
-
-        Customer swap;
-
-        for (int i = 0; i < customer.length - 1; i++) {
-            if (customer[i].getFullName().compareTo(customer[i + 1].getFullName()) > 0) {
-
-                swap = customer[i];
-                customer[i] = customer[i + 1];
-                customer[i + 1] = swap;
-
-                i = -1;
-
-            }
-        }
-
-        out();
-
+    public Customer[] getCustomers() {
+        return customers;
     }
 
-    public void outCard(String min, String max) {
-        for (int i = 0; i < customer.length; i++) {
-
-            if (BankLogic.greater(customer[i].getBankCard(), min) && BankLogic.greater(max, customer[i].getBankCard())) {
-
-                System.out.println(customer[i].toString());
-
-            }
-
-        }
+    public void setCustomers(Customer[] customers) {
+        this.customers = customers;
     }
-
-
-    public void out() {
-        for (int i = 0; i < customer.length; i++) {
-            System.out.println(customer[i].toString());
-        }
-    }
-
 }

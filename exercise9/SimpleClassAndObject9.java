@@ -12,24 +12,26 @@ package by.jonline.grow.programmingwithclass.exercise9;
  */
 
 public class SimpleClassAndObject9 {
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		Book[] book = new Book[5];
+        Book[] book = new Book[5];
 
-		for (int i = 0; i < book.length; i++) {
-			book[i] = new Book(i, "Война и мир" + i, "Толстой" + i, "ОАО книга" + i, 2000 + i, i, 200 + i,
-					"книга" + i);
-		}
+        for (int i = 0; i < book.length; i++) {
+            book[i] = new Book(i, "Война и мир" + i, "Толстой" + i, "ОАО книга" + i , 2000 + i, i, 200 + i,
+                    "книга" + i);
+        }
 
-		Library library = new Library(book);
-		library.out();
-		System.out.println("---------------------------");
-		library.outByAuthor("Толстой1");
-		System.out.println("---------------------------");
-		library.outByPublishingHouse("ОАО книга2");
-		System.out.println("---------------------------");
-		library.outByYear(2002);
+        Library library = new Library(book);
+        View view = new View();
 
-	}
+        view.out(library);
+        System.out.println("---------------------------");
+        view.outByAuthor(library, "Толстой1");
+        System.out.println("---------------------------");
+        view.outByPublishingHouse(library, "ОАО книга2");
+        System.out.println("---------------------------");
+        view.outByYear(library, 2002);
+
+    }
 }
 
