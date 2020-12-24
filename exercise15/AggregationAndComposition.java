@@ -27,12 +27,13 @@ public class AggregationAndComposition {
 		tour[13] = new Tour("отдых1", "машина1", "все включено1", 55, 50.510);
 
 		Company com = new Company(tour);
+		View view = new View();
 
-		com.sortByCost();
-		com.getTour("отдых1", "", "все включено1", 0, -10);
-
-		System.out.println("----------");
+		view.out(com);
+		System.out.println("-----sortByDay-----");
 		com.sortByDay();
-		com.out();
+		view.out(com);
+		System.out.println("----выбор:\n тип отдыха - отдых1/машина не имеет значение/еда - все включено1/дни - <= 51/стоимость не имеет значение ------");
+		view.out(com.getOffer("отдых1", "", "все включено1",51 , -10));
 	}
 }

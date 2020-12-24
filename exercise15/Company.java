@@ -3,174 +3,186 @@ package by.jonline.grow.programmingwithclass.exercise15;
 import java.util.Arrays;
 
 public class Company {
-	Tour[] tour;
+    Tour[] tour;
 
-	public Company(Tour[] tour) {
-		this.tour = tour;
-	}
+    public Company(Tour[] tour) {
+        this.tour = tour;
+    }
 
-	public void getTour(String type, String vehicle, String food, int day, double cost) {
+    public Tour[] getOffer(String type, String vehicle, String food, int day, double cost) {
 
-		if (tour == null) {
-			System.out.println("nothing");
-			return;
-		}
+        if (tour == null) {
+            System.out.println("nothing");
+            return null;
+        }
 
-		Tour[] consilience;
-		consilience = Arrays.copyOf(tour, tour.length);
+        Tour[] offer;
+        offer = Arrays.copyOf(tour, tour.length);
 
-		removeByType(type, consilience);
-		removeByVehicle(vehicle, consilience);
-		removeByFood(food, consilience);
-		removeByDay(day, consilience);
-		removeByCost(cost, consilience);
+        removeByType(type, offer);
+        removeByVehicle(vehicle, offer);
+        removeByFood(food, offer);
+        removeByDay(day, offer);
+        removeByCost(cost, offer);
 
-		for (int i = 0; i < consilience.length; i++) {
-			if (consilience[i] != null) {
-				System.out.println(consilience[i].toString());
-			}
-		}
+        return offer;
 
-	}
+    }
 
-	public void out(){
-		for (int i = 0; i < tour.length; i++){
-			System.out.println(tour[i].toString());
-		}
-	}
+    private void removeByType(String type, Tour[] offer) {
 
-	private void removeByType(String type, Tour[] consilience) {
+        for (int i = 0; offer[i] != null && i < offer.length; i++) {
+            if (type.equals("")) {
+                return;
+            }
 
-		for (int i = 0; i < tour.length; i++) {
-			if (type.equals("")) {
-				return;
-			}
+            if (!offer[i].getType().equals(type)) {
+                remove(offer, i);
+                i -= 1;
+            }
+        }
 
-			if (!tour[i].getType().equals(type)) {
-				consilience[i] = null;
-			}
-		}
+    }
 
-	}
+    private void removeByVehicle(String vehicle, Tour[] offer) {
 
-	private void removeByVehicle(String vehicle, Tour[] consilience) {
+        for (int i = 0; offer[i] != null && i < offer.length; i++) {
+            if (vehicle.equals("")) {
+                return;
+            }
 
-		for (int i = 0; i < tour.length; i++) {
-			if (vehicle.equals("")) {
-				return;
-			}
+            if (!offer[i].getVehicle().equals(vehicle)) {
+                remove(offer, i);
+                i -= 1;
+            }
+        }
 
-			if (!tour[i].getVehicle().equals(vehicle)) {
-				consilience[i] = null;
-			}
-		}
+    }
 
-	}
+    private void removeByFood(String food, Tour[] offer) {
 
-	private void removeByFood(String food, Tour[] consilience) {
+        for (int i = 0; offer[i] != null && i < offer.length; i++) {
+            if (food.equals("")) {
+                return;
+            }
 
-		for (int i = 0; i < tour.length; i++) {
-			if (food.equals("")) {
-				return;
-			}
+            if (!offer[i].getFood().equals(food)) {
+                remove(offer, i);
+                i -= 1;
+            }
+        }
 
-			if (!tour[i].getFood().equals(food)) {
-				consilience[i] = null;
-			}
-		}
+    }
 
-	}
+    private void removeByDay(int day, Tour[] offer) {
 
-	private void removeByDay(int day, Tour[] consilience) {
+        for (int i = 0; offer[i] != null && i < offer.length; i++) {
+            if (day <= 0) {
+                return;
+            }
 
-		for (int i = 0; i < tour.length; i++) {
-			if (day <= 0) {
-				return;
-			}
+            if (!(offer[i].getDay() <= day)) {
+                remove(offer, i);
+                i -= 1;
+            }
+        }
 
-			if (!(tour[i].getDay() <= day)) {
-				consilience[i] = null;
-			}
-		}
+    }
 
-	}
+    private void removeByCost(double cost, Tour[] offer) {
 
-	private void removeByCost(double cost, Tour[] consilience) {
+        for (int i = 0; offer[i] != null && i < offer.length; i++) {
+            if (cost < 0) {
+                return;
+            }
 
-		for (int i = 0; i < tour.length; i++) {
-			if (cost < 0) {
-				return;
-			}
+            if (!(offer[i].getCost() <= cost)) {
+                remove(offer, i);
+                i -= 1;
+            }
+        }
 
-			if (!(tour[i].getCost() <= cost)) {
-				consilience[i] = null;
-			}
-		}
+    }
 
-	}
+    private void remove(Tour[] offer, int ind) {
 
-	public void sortByType() {
+        for (int i = ind; i < offer.length - 1; i++) {
+            offer[i] = offer[i + 1];
+        }
 
-		for (int i = 0; i < tour.length - 1; i++) {
-			if (tour[i].getType().compareTo(tour[i + 1].getType()) > 0) {
-				swap(i, i + 1);
-				i = -1;
-			}
-		}
+        offer[offer.length - 1] = null;
 
-	}
+    }
 
-	public void sortByVehicle() {
+    public void sortByType() {
 
-		for (int i = 0; i < tour.length - 1; i++) {
-			if (tour[i].getVehicle().compareTo(tour[i + 1].getVehicle()) > 0) {
-				swap(i, i + 1);
-				i = -1;
-			}
-		}
+        for (int i = 0; i < tour.length - 1; i++) {
+            if (tour[i].getType().compareTo(tour[i + 1].getType()) > 0) {
+                swap(i, i + 1);
+                i = -1;
+            }
+        }
 
-	}
+    }
 
-	public void sortByFood() {
+    public void sortByVehicle() {
 
-		for (int i = 0; i < tour.length - 1; i++) {
-			if (tour[i].getFood().compareTo(tour[i + 1].getFood()) > 0) {
-				swap(i, i + 1);
-				i = -1;
-			}
-		}
+        for (int i = 0; i < tour.length - 1; i++) {
+            if (tour[i].getVehicle().compareTo(tour[i + 1].getVehicle()) > 0) {
+                swap(i, i + 1);
+                i = -1;
+            }
+        }
 
-	}
+    }
 
-	public void sortByDay() {
+    public void sortByFood() {
 
-		for (int i = 0; i < tour.length - 1; i++) {
-			if (tour[i].getDay() > tour[i + 1].getDay()) {
-				swap(i, i + 1);
-				i = -1;
-			}
-		}
+        for (int i = 0; i < tour.length - 1; i++) {
+            if (tour[i].getFood().compareTo(tour[i + 1].getFood()) > 0) {
+                swap(i, i + 1);
+                i = -1;
+            }
+        }
 
-	}
+    }
 
-	public void sortByCost() {
+    public void sortByDay() {
 
-		for (int i = 0; i < tour.length - 1; i++) {
-			if (tour[i].getCost() > tour[i + 1].getCost()) {
-				swap(i, i + 1);
-				i = -1;
-			}
-		}
+        for (int i = 0; i < tour.length - 1; i++) {
+            if (tour[i].getDay() > tour[i + 1].getDay()) {
+                swap(i, i + 1);
+                i = -1;
+            }
+        }
 
-	}
+    }
 
-	private void swap(int ind1, int ind2) {
-		Tour swap;
+    public void sortByCost() {
 
-		swap = tour[ind1];
-		tour[ind1] = tour[ind2];
-		tour[ind2] = swap;
+        for (int i = 0; i < tour.length - 1; i++) {
+            if (tour[i].getCost() > tour[i + 1].getCost()) {
+                swap(i, i + 1);
+                i = -1;
+            }
+        }
 
-	}
+    }
 
+    private void swap(int ind1, int ind2) {
+        Tour swap;
+
+        swap = tour[ind1];
+        tour[ind1] = tour[ind2];
+        tour[ind2] = swap;
+
+    }
+
+    public Tour[] getTour() {
+        return tour;
+    }
+
+    public void setTour(Tour[] tour) {
+        this.tour = tour;
+    }
 }
