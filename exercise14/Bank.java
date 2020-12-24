@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Bank {
 
-    private int customerId;
-    private int bankAccountId;
+    private int customerIndex;
+    private int bankAccountIndex;
 
     private String name;
     private Customer[] customers;
@@ -21,6 +21,7 @@ public class Bank {
         this.name = name;
     }
 
+
     public void createAccount(Customer customer) {
 
         if (customer == null) {
@@ -34,67 +35,22 @@ public class Bank {
             System.out.println("пользователь добавлен");
         }
 
-        if (bankAccountId == bankAccounts.length) {
+        if (bankAccountIndex == bankAccounts.length) {
             increaseBankAccounts();
         }
 
-        bankAccounts[bankAccountId] = new BankAccount(name + customer.getId() + bankAccountId, customer.getId());
+        bankAccounts[bankAccountIndex] = new BankAccount(name + customer.getId() + bankAccountIndex, customer.getId());
 
-        bankAccountId++;
+        bankAccountIndex++;
 
 
-    }
-
-    private void addCustomer(Customer customer) {
-        if (customerId == customers.length) {
-            increaseCustomers();
-        }
-        customers[customerId] = customer;
-        customerId++;
-    }
-
-    private void increaseCustomers() {
-        Customer[] copy = Arrays.copyOf(customers, customers.length);
-
-        customers = new Customer[copy.length * 2];
-
-        customers = Arrays.copyOf(copy, copy.length);
-
-        System.out.println("размер пользователей увеличен");
-
-    }
-
-    private void increaseBankAccounts() {
-        BankAccount[] copy = Arrays.copyOf(bankAccounts, bankAccounts.length);
-
-        bankAccounts = new BankAccount[copy.length * 2];
-
-        bankAccounts = Arrays.copyOf(copy, bankAccounts.length);
-
-        System.out.println("размер аккаунтов увеличен");
-
-    }
-
-    private boolean existCustomer(Customer customer) {
-
-        for (int i = 0; i < customerId; i++) {
-            if (customer.equals(customers[i])) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     public void activateAccount(Customer customer, String accountCode) {
-        BankAccount account;
-        if (customer == null) {
-            System.out.println("пользователя нет");
-            return;
-        }
 
-        if (!existCustomer(customer)) {
-            System.out.println("такого пользователя нет");
+        BankAccount account;
+
+        if (!checkCustomer(customer)) {
             return;
         }
 
@@ -109,14 +65,10 @@ public class Bank {
     }
 
     public void blockAccount(Customer customer, String accountCode) {
-        BankAccount account;
-        if (customer == null) {
-            System.out.println("пользователя нет");
-            return;
-        }
 
-        if (!existCustomer(customer)) {
-            System.out.println("такого пользователя нет");
+        BankAccount account;
+
+        if (!checkCustomer(customer)) {
             return;
         }
 
@@ -129,26 +81,52 @@ public class Bank {
         account.setActive(false);
     }
 
-    public BankAccount findAccount(String accountCode, int customerId) {
-        for (int i = 0; i < bankAccountId; i++) {
-            if (accountCode.equals(bankAccounts[i].getAccountCode())) {
-                if (customerId == bankAccounts[i].getCustomerId()) {
-                    return bankAccounts[i];
-                }
-            }
+    public void addMoney(Customer customer, String accountCode, double money) {
+
+        BankAccount account;
+
+        if (!checkCustomer(customer)) {
+            return;
         }
-        return null;
+
+        account = findAccount(accountCode, customer.getId());
+        if (account == null) {
+            System.out.println("у этого пользователя нет этого аккаунта");
+            return;
+        }
+
+        account.setMoney(account.getMoney() + money);
     }
 
+    public void getMoney(Customer customer, String accountCode, double money) {
+
+        BankAccount account;
+
+        if (!checkCustomer(customer)) {
+            return;
+        }
+
+        account = findAccount(accountCode, customer.getId());
+        if (account == null) {
+            System.out.println("у этого пользователя нет этого аккаунта");
+            return;
+        }
+
+        account.setMoney(account.getMoney() - money);
+    }
+
+
     public void sort() {
+
         BankAccount swap;
+
         boolean q = true;
 
         while (q) {
 
             q = false;
 
-            for (int i = 0; i < bankAccountId - 1; i++) {
+            for (int i = 0; i < bankAccountIndex - 1; i++) {
 
                 if (bankAccounts[i].getCustomerId() > bankAccounts[i + 1].getCustomerId()) {
                     swap = bankAccounts[i];
@@ -162,54 +140,27 @@ public class Bank {
         }
     }
 
-    public void addMoney(Customer customer, String accountCode, double money) {
-        BankAccount account;
-        if (customer == null) {
-            System.out.println("пользователя нет");
-            return;
+    public BankAccount findAccount(String accountCode, int customerId) {
+
+        for (int i = 0; i < bankAccountIndex; i++) {
+            if (accountCode.equals(bankAccounts[i].getAccountCode())) {
+                if (customerId == bankAccounts[i].getCustomerId()) {
+                    return bankAccounts[i];
+                }
+            }
         }
-
-        if (!existCustomer(customer)) {
-            System.out.println("такого пользователя нет");
-            return;
-        }
-
-        account = findAccount(accountCode, customer.getId());
-        if (account == null) {
-            System.out.println("у этого пользователя нет этого аккаунта");
-            return;
-        }
-
-        account.setMoney(account.getMoney() + money);
-    }
-
-
-    public void getMoney(Customer customer, String accountCode, double money) {
-
-        BankAccount account;
-        if (customer == null) {
-            System.out.println("пользователя нет");
-            return;
-        }
-
-        if (!existCustomer(customer)) {
-            System.out.println("такого пользователя нет");
-            return;
-        }
-
-        account = findAccount(accountCode, customer.getId());
-        if (account == null) {
-            System.out.println("у этого пользователя нет этого аккаунта");
-            return;
-        }
-
-        account.setMoney(account.getMoney() - money);
+        return null;
     }
 
     public double allMoney(Customer customer) {
+
         double sum = 0;
 
-        for (int i = 0; i < bankAccountId; i++) {
+        if (!checkCustomer(customer)) {
+            return 1.0 / 0;
+        }
+
+        for (int i = 0; i < bankAccountIndex; i++) {
             if (bankAccounts[i].getCustomerId() == customer.getId()) {
                 sum += bankAccounts[i].getMoney();
             }
@@ -218,8 +169,14 @@ public class Bank {
     }
 
     public double allPositiveMoney(Customer customer) {
+
         double sum = 0;
-        for (int i = 0; i < bankAccountId; i++) {
+
+        if (!checkCustomer(customer)) {
+            return 1.0 / 0;
+        }
+
+        for (int i = 0; i < bankAccountIndex; i++) {
             if (bankAccounts[i].getCustomerId() == customer.getId()) {
                 if (bankAccounts[i].getMoney() > 0) {
                     sum += bankAccounts[i].getMoney();
@@ -230,8 +187,14 @@ public class Bank {
     }
 
     public double allNegativeMoney(Customer customer) {
+
         double sum = 0;
-        for (int i = 0; i < bankAccountId; i++) {
+
+        if (!checkCustomer(customer)) {
+            return 1.0 / 0;
+        }
+
+        for (int i = 0; i < bankAccountIndex; i++) {
             if (bankAccounts[i].getCustomerId() == customer.getId()) {
                 if (bankAccounts[i].getMoney() < 0) {
                     sum += bankAccounts[i].getMoney();
@@ -239,6 +202,82 @@ public class Bank {
             }
         }
         return sum;
+    }
+
+
+
+    public boolean checkCustomer(Customer customer) {
+
+        if (customer == null) {
+            System.out.println("пользователя нет");
+            return false;
+        }
+
+        if (!existCustomer(customer)) {
+            System.out.println("такого пользователя нет");
+            return false;
+        }
+
+        return true;
+
+    }
+
+    private void addCustomer(Customer customer) {
+        if (customerIndex == customers.length) {
+            increaseCustomers();
+        }
+        customers[customerIndex] = customer;
+        customerIndex++;
+    }
+
+    private void increaseCustomers() {
+
+        Customer[] copy = Arrays.copyOf(customers, customers.length);
+
+        customers = new Customer[copy.length * 2];
+        customers = Arrays.copyOf(copy, copy.length);
+
+        System.out.println("размер пользователей увеличен");
+
+    }
+
+    private void increaseBankAccounts() {
+
+        BankAccount[] copy = Arrays.copyOf(bankAccounts, bankAccounts.length);
+
+        bankAccounts = new BankAccount[copy.length * 2];
+        bankAccounts = Arrays.copyOf(copy, bankAccounts.length);
+
+        System.out.println("размер аккаунтов увеличен");
+
+    }
+
+    private boolean existCustomer(Customer customer) {
+
+        for (int i = 0; i < customerIndex; i++) {
+            if (customer.equals(customers[i])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    public int getCustomerIndex() {
+        return customerIndex;
+    }
+
+    public void setCustomerIndex(int customerIndex) {
+        this.customerIndex = customerIndex;
+    }
+
+    public int getBankAccountIndex() {
+        return bankAccountIndex;
+    }
+
+    public void setBankAccountIndex(int bankAccountIndex) {
+        this.bankAccountIndex = bankAccountIndex;
     }
 
     public String getName() {
@@ -249,4 +288,19 @@ public class Bank {
         this.name = name;
     }
 
+    public Customer[] getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Customer[] customers) {
+        this.customers = customers;
+    }
+
+    public BankAccount[] getBankAccounts() {
+        return bankAccounts;
+    }
+
+    public void setBankAccounts(BankAccount[] bankAccounts) {
+        this.bankAccounts = bankAccounts;
+    }
 }

@@ -2,49 +2,59 @@ package by.jonline.grow.programmingwithclass.exercise14;
 
 public class BankAccount {
 
-	private String accountCode;
-	private double money;
-	private boolean active;
-	private int customerId;
+    private String accountCode;
+    private double money;
+    private boolean active;
+    private int customerId;
 
-	{
-		active = false;
-	}
+    {
+        money = 0;
+        active = false;
+    }
 
-	public BankAccount(String accountCode, int customerId) {
-		this.accountCode = accountCode;
-		this.customerId = customerId;
-	}
+    public BankAccount(String accountCode, int customerId) {
+        this.accountCode = accountCode;
+        this.customerId = customerId;
+    }
 
-	public String getAccountCode() {
-		return accountCode;
-	}
+    public String getAccountCode() {
+        return accountCode;
+    }
 
-	public void setAccountCode(String accountCode) {
-		this.accountCode = accountCode;
-	}
+    public double getMoney() {
+        return money;
+    }
 
-	public double getMoney() {
-		return money;
-	}
+    public boolean isActive() {
+        return active;
+    }
 
-	public void setMoney(double money) {
-		this.money = money;
-	}
+    public int getCustomerId() {
+        return customerId;
+    }
 
-	public boolean isActive() {
-		return active;
-	}
+    public void setAccountCode(String accountCode) {
+        this.accountCode = accountCode;
+    }
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+    public void setMoney(double money) {
+        this.money = money;
+    }
 
-	public int getCustomerId() {
-		return customerId;
-	}
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
-	}
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + " {accountCode='" + accountCode + '\'' +
+                ", money=" + money +
+                ", active=" + active +
+                ", customerId=" + customerId +
+                '}';
+    }
 }

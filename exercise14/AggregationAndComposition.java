@@ -15,12 +15,14 @@ public class AggregationAndComposition {
 		bank.createAccount(customer1);
 		bank.createAccount(customer);
 
+		System.out.println(bank.findAccount("a10", customer1.getId()));
+		bank.sort();
+
 		bank.activateAccount(customer1, "a10");
 		bank.activateAccount(customer, "a01");
 
 		bank.addMoney(customer1,"a10", 500);
 		bank.getMoney(customer,"a01",500);
-
 
 		System.out.println(bank.allMoney(customer));
 		System.out.println(bank.allNegativeMoney(customer));
