@@ -22,11 +22,11 @@ public class Bank {
     }
 
 
-    public void createAccount(Customer customer) {
+    public boolean createAccount(Customer customer) {
 
         if (customer == null) {
             System.out.println("нет пользователя");
-            return;
+            return false;
         }
 
         if (!existCustomer(customer)) {
@@ -43,76 +43,82 @@ public class Bank {
 
         bankAccountIndex++;
 
-
+        return true;
     }
 
-    public void activateAccount(Customer customer, String accountCode) {
+    public boolean activateAccount(Customer customer, String accountCode) {
 
         BankAccount account;
 
         if (!checkCustomer(customer)) {
-            return;
+            return false;
         }
 
         account = findAccount(accountCode, customer.getId());
         if (account == null) {
             System.out.println("у этого пользователя нет этого аккаунта");
-            return;
+            return false;
         }
 
         account.setActive(true);
-
+        return true;
     }
 
-    public void blockAccount(Customer customer, String accountCode) {
+    public boolean blockAccount(Customer customer, String accountCode) {
 
         BankAccount account;
 
         if (!checkCustomer(customer)) {
-            return;
+            return false;
         }
 
         account = findAccount(accountCode, customer.getId());
         if (account == null) {
             System.out.println("у этого пользователя нет этого аккаунта");
-            return;
+            return false;
         }
 
         account.setActive(false);
+
+        return true;
     }
 
-    public void addMoney(Customer customer, String accountCode, double money) {
+    public boolean addMoney(Customer customer, String accountCode, double money) {
 
         BankAccount account;
 
         if (!checkCustomer(customer)) {
-            return;
+            return false;
         }
 
         account = findAccount(accountCode, customer.getId());
         if (account == null) {
             System.out.println("у этого пользователя нет этого аккаунта");
-            return;
+            return false;
         }
 
         account.setMoney(account.getMoney() + money);
+
+        return true;
     }
 
-    public void getMoney(Customer customer, String accountCode, double money) {
+    public boolean getMoney(Customer customer, String accountCode, double money) {
 
         BankAccount account;
 
         if (!checkCustomer(customer)) {
-            return;
+            return false;
         }
 
         account = findAccount(accountCode, customer.getId());
         if (account == null) {
             System.out.println("у этого пользователя нет этого аккаунта");
-            return;
+            return false;
         }
 
         account.setMoney(account.getMoney() - money);
+
+        return true;
     }
 
 
